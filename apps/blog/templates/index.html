@@ -1,0 +1,28 @@
+{{block content}}
+
+<style type="text/css">
+td{font-size:10pt;}
+</style>
+
+{{<<form}}
+
+<hr>
+    <table>
+    {{for n in blog:}}
+    <tr font=>
+     <tr>
+       <td>{{=n.username}}说:</td>
+       <td bgcolor="#f0f0f0">{{=n.title}}</td>
+     </tr>
+      <tr>
+      <td></td>
+      <td style="border:1px solid #f0f0f0; background-color:#e0e0e0; height:100px; width:400px;">{{=n.content}}</td>
+      </tr>
+     <tr><td></td><td>{{=n.datetime}}</td></tr>
+     <tr><td></td><td></td></tr>
+    </tr>
+    </p>
+    {{pass}}
+    </table>
+
+{{end}}
