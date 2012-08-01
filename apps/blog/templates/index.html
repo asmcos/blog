@@ -4,9 +4,18 @@
 td{font-size:10pt;}
 </style>
 
-{{<<form}}
-
+{{if hasattr(request, 'user') and request.user:}}
+欢迎{{=request.user.username}} <a href="/logout">退出</a>
+{{else:}}
+<a href="/register"> 注册</a> <a href="/login">登录</a>
+{{pass}}
 <hr>
+
+{{if hasattr(request, 'user') and request.user:}}
+{{<<form}}
+<hr>
+{{pass}}
+
     <table>
     {{for n in blog:}}
     <tr font=>

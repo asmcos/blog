@@ -11,5 +11,6 @@ def index():
 		flag = form.validate(request.params)
 		if flag:
 			n = blogs(**form.data);
+			n.username = request.user.username
 			n.save();
 	return {'blog':blog,'form':form}
