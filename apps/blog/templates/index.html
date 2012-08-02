@@ -1,8 +1,6 @@
-{{block content}}
+{{extend "base.html"}}  
 
-<style type="text/css">
-td{font-size:10pt;}
-</style>
+{{block content}}
 
 {{if hasattr(request, 'user') and request.user:}}
 欢迎{{=request.user.username}} <a href="/logout">退出</a>
@@ -16,22 +14,21 @@ td{font-size:10pt;}
 <hr>
 {{pass}}
 
-    <table>
     {{for n in blog:}}
-    <tr font=>
-     <tr>
-       <td>{{=n.username}}说:</td>
-       <td bgcolor="#f0f0f0">{{=n.title}}</td>
-     </tr>
-      <tr>
-      <td></td>
-      <td style="border:1px solid #f0f0f0; background-color:#e0e0e0; height:100px; width:400px;">{{=n.content}}</td>
-      </tr>
-     <tr><td></td><td>{{=n.datetime}}</td></tr>
-     <tr><td></td><td></td></tr>
-    </tr>
-    </p>
+	<div class="row show-grid">
+
+	  <div class="span2 offset1">
+		<div class="alert alert-info">{{=n.username}}说:</div>
+          </div>
+
+	  <div class="span6">
+	     <div class="well">
+	  	<div class="alert alert-message">{{=n.title}}</div>
+	  	<div class="alert alert-success">{{=n.content}}</p>{{=n.datetime}}</div>
+     
+	     </div>
+           </div>
+	</div>
     {{pass}}
-    </table>
 
 {{end}}
